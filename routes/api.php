@@ -7,6 +7,8 @@ use App\Http\Controllers\LogActivitiesController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\CategoriesController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -46,6 +48,10 @@ Route::group(['middleware' => ['jwt.verify']], function () {
         Route::get('class/detail/{classes}', [ClassController::class, 'classdetail']);
 
 });
+
+//categories
+Route::get('categories', [CategoriesController::class, 'index']);
+Route::get('categories/{categories}', [CategoriesController::class, 'select_id']);
 
 //class
 Route::get('class', [ClassController::class, 'index']);
