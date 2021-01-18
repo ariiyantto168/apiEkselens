@@ -60,10 +60,11 @@ class OrderController extends Controller
           );
 
         $customer_details = array(
-            'first_name'       => Auth::user()->name,
-            'last_name'        => Auth::user()->name,
+            'first_name'       => Auth::user()->firstname,
+            'last_name'        => Auth::user()->lastname,
             'email'            => Auth::user()->email,
-            'phone'            => "081322311801"
+            'phone'            => Auth::user()->mobile,
+            'address'          => Auth::user()->address
         );
   
         $transaction_data = array(

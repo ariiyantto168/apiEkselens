@@ -62,18 +62,15 @@ class AuthController extends Controller
         $register->role = $request->role;
         $register->email = $request->email;
         $register->password =  Hash::make($request->password);
+        $register->firstname = $request->firstname;
+        $register->lastname = $request->lastname;
+        $register->mobile = $request->mobile;
+        $register->tempatlahir = $request->tempatlahir;
+        $register->date_born = date('Y-m-d',strtotime($request->date_born));
+        $register->jobrole = $request->jobrole;
+        $register->address = $request->address;
         $register->save();
         
-        $profile = new Userprofiles;
-        $profile->idusers =   $register->idusers;
-        $profile->firstname = $request->firstname;
-        $profile->lastname = $request->lastname;
-        $profile->mobile = $request->mobile;
-        $profile->tempatlahir = $request->tempatlahir;
-        $profile->jobrole = $request->jobrole;
-        $profile->address = $request->address;
-        $profile->save();
-
         // log_activity('Register Successfully',url()->current(), $request->method() ,Auth::user()->idusers);
         // $this->created_grade_totals(Auth::user()->idusers,0);
         
@@ -81,7 +78,6 @@ class AuthController extends Controller
 
         return response()->json([
                     'user' => $register,
-                    'profile' => $profile,
                     'data_token' =>  $token 
         ], 200);    
     }
