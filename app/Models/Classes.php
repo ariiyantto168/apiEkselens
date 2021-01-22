@@ -17,4 +17,14 @@ class Classes extends Model
     protected $fillable = [
         'name','duration','images','demo','tutor','description','imagesmitra','imagesinstructor',
     ];
+
+    public function subclass()
+    {
+        return $this->hasMany('App\Models\SubClass','idclass','idclass');
+    }
+
+    public function hilights()
+    {
+        return $this->hasMany('App\Models\Hilights','idclass','idclass');
+    }
 }

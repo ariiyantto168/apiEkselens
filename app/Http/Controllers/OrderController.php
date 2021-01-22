@@ -49,6 +49,7 @@ class OrderController extends Controller
                 'price' => $val['price'],
                 'quantity' => 1,
                 'name' => 'example'.'-'.$idx 
+                // 'name' => 'example'.'-'.$idx 
             ];
              
             array_push($details, $saveDetail);
